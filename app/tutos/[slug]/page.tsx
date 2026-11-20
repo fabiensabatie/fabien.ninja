@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { COLOR, PERSONAS } from "@/lib/content";
-import { REVALIDATE, audiencesOf, canonicalUrl, getTutorial, resultOf, themeOf } from "@/lib/mexty";
+import { audiencesOf, canonicalUrl, getTutorial, resultOf, themeOf } from "@/lib/mexty";
 
-export const revalidate = REVALIDATE;
+export const revalidate = 600; // must be a literal for Next.js; keep in step with REVALIDATE in lib/mexty.ts
 export const dynamicParams = true;
 export function generateStaticParams() {
   return [];

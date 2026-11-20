@@ -6,9 +6,9 @@ import {
   COLOR, EDVERSE_URL, IMG, MEXTY_URL, PERSONAS, PERSONA_ORDER, PLACEHOLDER_TOP, RIDE, SHADE, WALL,
 } from "@/lib/content";
 import { USE_CASES } from "@/lib/usecases";
-import { REVALIDATE, audiencesOf, getTutorials, type Tutorial } from "@/lib/mexty";
+import { audiencesOf, getTutorials, type Tutorial } from "@/lib/mexty";
 
-export const revalidate = REVALIDATE;
+export const revalidate = 600; // must be a literal for Next.js; keep in step with REVALIDATE in lib/mexty.ts
 
 export const metadata = { alternates: { canonical: "/" } };
 
