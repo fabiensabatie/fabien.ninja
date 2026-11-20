@@ -4,8 +4,9 @@ import SiteFooter from "@/components/SiteFooter";
 import RideRail from "@/components/RideRail";
 import OnAir from "@/components/OnAir";
 import { getRadio } from "@/lib/radio";
+import { getSessions, toCard } from "@/lib/ride";
 import {
-  COLOR, EDVERSE_URL, IMG, MEXTY_URL, PERSONAS, PERSONA_ORDER, PLACEHOLDER_TOP, RIDE, SHADE, WALL,
+  COLOR, EDVERSE_URL, IMG, MEXTY_URL, PERSONAS, PERSONA_ORDER, PLACEHOLDER_TOP, SHADE, WALL,
 } from "@/lib/content";
 import { USE_CASES } from "@/lib/usecases";
 import { audiencesOf, getTutorials, type Tutorial } from "@/lib/mexty";
@@ -50,7 +51,7 @@ function topFive(tutorials: Tutorial[]): TopItem[] {
 }
 
 export default async function Home() {
-  const [tutorials, radio] = await Promise.all([getTutorials(), getRadio()]);
+  const [tutorials, radio, sessions] = await Promise.all([getTutorials(), getRadio(), getSessions()]);
   const byTitle = new Map(tutorials.map((t) => [t.title.trim().toLowerCase(), t]));
   const ucTotal = USE_CASES.reduce((a, c) => a + c.items.length, 0);
   const top = topFive(tutorials);
@@ -221,7 +222,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {RIDE.length ? <RideRail sessions={RIDE} /> : null}
+        {sessions.length ? <RideRail sessions={sessions.map(toCard)} /> : null}
 
         {radio.tracks.length || radio.live.on ? (
           <section id="radio" className="wrap" style={{ paddingTop: 96, display: "flex", flexDirection: "column", gap: 20 }}>

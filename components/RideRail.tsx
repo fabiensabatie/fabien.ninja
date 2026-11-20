@@ -16,10 +16,11 @@ export default function RideRail({ sessions }: { sessions: RideSession[] }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 16, flexWrap: "wrap" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <span className="eyebrow">Ride Studio</span>
-          <h2 className="disp disp-xl" style={{ margin: 0, fontSize: 44, lineHeight: 1.05 }}>Les sessions Ride Studio</h2>
+          <h2 className="disp disp-xl" style={{ margin: 0, fontSize: 44, lineHeight: 1.05 }}>Ride Studio <span className="grad">Sessions</span></h2>
           <p style={{ margin: 0, fontSize: 17, lineHeight: 1.55, color: "var(--soft)", maxWidth: 560 }}>
-            Les vidéos que je fais avec Ride Studio, session après session.
+            Je construis une formation sur la route, à la voix, avec Claude. Chaque session : la vidéo, la formation livrée (gratuite) et tout ce qui s&apos;est dit.
           </p>
+          <a href="/ride" style={{ fontWeight: 700, display: "flex", alignItems: "center", gap: 6 }}>Toutes les sessions <span aria-hidden="true">→</span></a>
         </div>
         <div className="rsnav">
           <button type="button" className="rsb" onClick={() => scroll(-1)} aria-label="Sessions précédentes">
@@ -32,7 +33,7 @@ export default function RideRail({ sessions }: { sessions: RideSession[] }) {
       </div>
       <div className="rsg" ref={rail} tabIndex={0} aria-label="Sessions Ride Studio">
         {sessions.map((v, i) => {
-          const n = pad2(sessions.length - i);
+          const n = pad2(v.no ?? sessions.length - i);
           return (
             <a key={v.url + i} href={v.url} className="rsc">
               <span className="th" style={v.thumb ? { backgroundImage: `url(${v.thumb})` } : undefined}>

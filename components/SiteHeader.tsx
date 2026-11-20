@@ -1,6 +1,5 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
-import { RIDE } from "@/lib/content";
 
 /** Absolute over the hero on the homepage, in the flow on inner pages. */
 export default function SiteHeader({ overlay = false, q = "" }: { overlay?: boolean; q?: string }) {
@@ -48,7 +47,7 @@ export default function SiteHeader({ overlay = false, q = "" }: { overlay?: bool
         <nav className="links" style={{ display: "flex", gap: 22, fontSize: 15, fontWeight: 500, marginLeft: "auto" }}>
           <Link href="/#publics">Pour qui</Link>
           <Link href="/#usecases">Cas d&apos;usage</Link>
-          {RIDE.length ? <Link href="/#ride">Ride Studio</Link> : null}
+          <Link href="/ride">Ride Studio</Link>
           <Link href="/radio">Radio</Link>
           <Link href="/#ecosysteme">Mexty &amp; EdVerse</Link>
         </nav>

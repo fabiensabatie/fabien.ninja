@@ -26,9 +26,9 @@ Other fields used: `language` (only `fr` posts are listed), `featuredImage` (car
 
 A **use case** line on the homepage links to the tutorial whose title is exactly the same text; until one exists it shows "bientôt" and searches `/tutos`.
 
-## Ride Studio
+## Ride Studio Sessions
 
-The section stays hidden until `RIDE` in `lib/content.ts` has sessions (`title`, `duration`, `date`, `url`, optional `thumb`).
+Every finished Ride Studio session appears on its own, within a minute: on the homepage rail, at `/ride` and at `/ride/<no>` (the video, the trainings it delivered as free public Mexty links, the moments and the transcript). Source: `GET $RIDE_STUDIO_URL/api/public/sessions` (and `/api/public/sessions/<no>` with the transcript). The videos stay on Ride Studio's volume and play from there. A session is hidden from the site by unticking "Sur fabien.ninja" in Ride Studio's episode library. The rail stays hidden while there is no session.
 
 ## Radio Monkey
 

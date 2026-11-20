@@ -102,9 +102,5 @@ export const WALL: { delay: string; dir: "alternate" | "alternate-reverse"; item
   { delay: "-10s", dir: "alternate-reverse", items: [S1(2), G1("paintlings"), S1(9), G1("robotpet"), S1(6)] },
 ];
 
-/**
- * Ride Studio sessions, newest first. The section stays hidden while this is
- * empty. `url` is where the video plays (YouTube, Mextribe post, Mexty media…).
- */
-export type RideSession = { title: string; duration: string; date: string; url: string; thumb?: string };
-export const RIDE: RideSession[] = [];
+/** A card of the Ride Studio Sessions rail (built from Ride Studio's public list, lib/ride.ts). */
+export type RideSession = { title: string; duration: string; date: string; url: string; thumb?: string; no?: number };
