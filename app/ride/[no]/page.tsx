@@ -12,7 +12,7 @@ export function generateStaticParams() {
 }
 
 type Params = { no: string };
-const WHO = { fabien: "Fabien", claude: "Claude", studio: "Studio" } as const;
+const WHO: Record<string, string> = { fabien: "Fabien", claude: "Claude", studio: "Studio", guest: "Invité" };
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const s = await getSession((await params).no);
@@ -108,7 +108,7 @@ export default async function SessionPage({ params }: { params: Promise<Params> 
               {s.transcript.map((l, i) => (
                 <li key={i} className={`who-${l.who}`}>
                   <span className="t">{fmtClock(l.atSec)}</span>
-                  <span className="w">{WHO[l.who] ?? l.who}</span>
+                  <span className="w">{l.name || WHO[l.who] || l.who}</span>
                   <span className="x">{l.text}</span>
                 </li>
               ))}

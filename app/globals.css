@@ -190,3 +190,4 @@ html{scroll-behavior:smooth}
 .ride-transcript .who-claude .w{color:var(--acc)}
 .ride-transcript .who-studio{color:var(--muted);font-style:italic}
 @media (max-width:560px){.ride-transcript li{grid-template-columns:44px 1fr}.ride-transcript .w{grid-column:2}.ride-transcript .x{grid-column:1/-1}}
+.ride-transcript .who-guest .w{color:#4FD1A5}

@@ -7,7 +7,7 @@ import { RIDE_STUDIO_URL } from "./radio";
  */
 export type SessionVideo = { variant: "tall" | "wide"; part: number; url: string };
 export type SessionContent = { kind: string; title: string; url: string | null };
-export type TranscriptLine = { atSec: number; who: "fabien" | "claude" | "studio"; text: string };
+export type TranscriptLine = { atSec: number; who: "fabien" | "claude" | "studio" | "guest"; name?: string; text: string };
 export type Session = {
   no: number;
   title: string;
