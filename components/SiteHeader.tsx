@@ -49,6 +49,7 @@ export default function SiteHeader({ overlay = false, q = "" }: { overlay?: bool
           <Link href="/#publics">Pour qui</Link>
           <Link href="/#usecases">Cas d&apos;usage</Link>
           {RIDE.length ? <Link href="/#ride">Ride Studio</Link> : null}
+          <Link href="/radio">Radio</Link>
           <Link href="/#ecosysteme">Mexty &amp; EdVerse</Link>
         </nav>
         <ThemeToggle />

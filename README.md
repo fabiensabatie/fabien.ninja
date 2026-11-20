@@ -30,6 +30,10 @@ A **use case** line on the homepage links to the tutorial whose title is exactly
 
 The section stays hidden until `RIDE` in `lib/content.ts` has sessions (`title`, `duration`, `date`, `url`, optional `thumb`).
 
+## Radio Monkey
+
+The radio plays in Ride Studio during the sessions. `/radio` lists every track it has broadcast (with a player) and shows what is on air right now (polled every 20 s through `/api/radio`). The homepage section appears once something has been broadcast. Source: `GET $RIDE_STUDIO_URL/api/public/radio`; without `RIDE_STUDIO_URL` the radio is simply empty.
+
 ## Run
 
 ```bash
@@ -38,4 +42,4 @@ npm run dev        # http://localhost:3000
 npm run build && npm start   # start listens on $PORT (Railway sets it)
 ```
 
-Environment (see `.env.example`): `MEXTY_API_URL` (default `https://api.mexty.ai`), `SITE_URL` (default `https://fabien.ninja`).
+Environment (see `.env.example`): `MEXTY_API_URL` (default `https://api.mexty.ai`), `SITE_URL` (default `https://fabien.ninja`), `RIDE_STUDIO_URL` (Radio Monkey).

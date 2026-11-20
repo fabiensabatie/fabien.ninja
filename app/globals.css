@@ -176,3 +176,5 @@ html{scroll-behavior:smooth}
 @media (max-width:860px){.wrap{padding:0 16px}.disp-xl{font-size:34px !important}.article{font-size:17px}}
 .light body{background:#F6F1E8}
 .who:hover{color:#FFFFFF}
+.radio-row{padding:14px 18px;display:grid;grid-template-columns:40px minmax(0,1fr) minmax(0,320px);gap:16px;align-items:center}
+@media (max-width:860px){.radio-row{grid-template-columns:40px minmax(0,1fr)}.radio-row audio{grid-column:1 / -1}}

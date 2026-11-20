@@ -2,6 +2,8 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import RideRail from "@/components/RideRail";
+import OnAir from "@/components/OnAir";
+import { getRadio } from "@/lib/radio";
 import {
   COLOR, EDVERSE_URL, IMG, MEXTY_URL, PERSONAS, PERSONA_ORDER, PLACEHOLDER_TOP, RIDE, SHADE, WALL,
 } from "@/lib/content";
@@ -48,7 +50,7 @@ function topFive(tutorials: Tutorial[]): TopItem[] {
 }
 
 export default async function Home() {
-  const tutorials = await getTutorials();
+  const [tutorials, radio] = await Promise.all([getTutorials(), getRadio()]);
   const byTitle = new Map(tutorials.map((t) => [t.title.trim().toLowerCase(), t]));
   const ucTotal = USE_CASES.reduce((a, c) => a + c.items.length, 0);
   const top = topFive(tutorials);
@@ -220,6 +222,22 @@ export default async function Home() {
         </section>
 
         {RIDE.length ? <RideRail sessions={RIDE} /> : null}
+
+        {radio.tracks.length || radio.live.on ? (
+          <section id="radio" className="wrap" style={{ paddingTop: 96, display: "flex", flexDirection: "column", gap: 20 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 16, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                <span className="eyebrow">Ride Studio</span>
+                <h2 className="disp disp-xl" style={{ margin: 0, fontSize: 44, lineHeight: 1.05 }}>Radio <span className="grad">Monkey</span></h2>
+                <p style={{ margin: 0, fontSize: 17, lineHeight: 1.55, color: "var(--soft)", maxWidth: 560 }}>
+                  La musique qui tourne pendant les sessions. {radio.tracks.length} morceau{radio.tracks.length > 1 ? "x" : ""} déjà diffusé{radio.tracks.length > 1 ? "s" : ""}.
+                </p>
+              </div>
+              <Link href="/radio" style={{ fontWeight: 700, display: "flex", alignItems: "center", gap: 6 }}>Tous les morceaux <span aria-hidden="true">→</span></Link>
+            </div>
+            <OnAir initial={radio.live} />
+          </section>
+        ) : null}
 
         {/* Mexty & EdVerse */}
         <section id="ecosysteme" className="wrap" style={{ paddingTop: 96, display: "flex", flexDirection: "column", gap: 18 }}>

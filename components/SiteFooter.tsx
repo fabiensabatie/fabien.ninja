@@ -30,6 +30,7 @@ export default function SiteFooter() {
             <span className="eyebrow" style={{ fontSize: 11, color: "var(--faint)" }}>Écosystème</span>
             <a href={MEXTY_URL}>Mexty</a>
             <a href={EDVERSE_URL}>EdVerse</a>
+            <Link href="/radio">Radio Monkey</Link>
             <span style={{ color: "var(--faint)" }}>MexTribe, bientôt</span>
           </div>
         </div>
